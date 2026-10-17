@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilesh Tripathi | Data Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f4f8fb;
+            --surface-color: #ffffff;
+            --surface-glass: rgba(255, 255, 255, 0.85);
+            --border-color: #dbeafe;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-blue: #0077cc;
+            --accent-sky: #0284c7;
+            --accent-sky-light: #e0f2fe;
+            --glow-color: rgba(0, 119, 204, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(244, 248, 251, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            z-index: 1000;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-brand span {
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-blue);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        header.hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 8% 4rem;
+            background: linear-gradient(135deg, #f4f8fb 0%, #e0f2fe 100%);
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Clean Circular Profile Image */
+        .hero-image-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-circle-img {
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-blue);
+            box-shadow: 0 10px 30px var(--glow-color);
+            transition: var(--transition);
+        }
+
+        .profile-circle-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 119, 204, 0.3);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+            box-shadow: 0 4px 14px rgba(0, 119, 204, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #0062a3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 119, 204, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            background: rgba(0, 119, 204, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            font-size: 1.05rem;
+        }
+
+        /* About Section */
+        .about-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            background: var(--bg-color);
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Technical Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+        }
+
+        .skill-category-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px var(--glow-color);
+        }
+
+        .skill-category-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-category-card h3 i {
+            color: var(--accent-blue);
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-badge {
+            background: var(--accent-sky-light);
+            color: #0369a1;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(2, 132, 199, 0.2);
+            transition: var(--transition);
+        }
+
+        .skill-badge:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 11px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            border: 4px solid var(--bg-color);
+            box-shadow: 0 0 0 2px var(--accent-blue);
+        }
+
+        .timeline-content {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-header h3 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-header h4 {
+            font-size: 1rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .timeline-date {
+            background: var(--accent-sky-light);
+            color: #0369a1;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .timeline-content ul {
+            list-style-type: disc;
+            padding-left: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-content li {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 35px var(--glow-color);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--accent-sky-light) 0%, #dbeafe 100%);
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-header h3 {
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-body p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-highlights {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-highlights li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .project-highlights li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        .project-impact {
+            background: rgba(2, 132, 199, 0.06);
+            border-left: 3px solid var(--accent-blue);
+            padding: 0.75rem 1rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        /* Education & Certifications */
+        .edu-cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        @media(max-width: 900px) {
+            .edu-cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card-box {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-box h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-box h3 i {
+            color: var(--accent-blue);
+        }
+
+        .list-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .list-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .list-item h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .list-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cert-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact & Footer */
+        .contact-section {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f4f8fb 100%);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 6rem 8%;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+
+        .contact-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+        }
+
+        .contact-card i {
+            color: var(--accent-blue);
+            font-size: 1.25rem;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        footer {
+            background: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .about-card {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--surface-color);
+                border-bottom: 1px solid var(--border-color);
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-brand"><i class="fa-solid fa-database"></i> NT</a>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#credentials">Credentials</a></li>
+            <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1rem;">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Nilesh Tripathi</h1>
+                <h2>Data Engineer</h2>
+                <p>Data Engineer with over 5.5 years of experience specializing in scalable ELT pipelines, SQL, Python, Snowflake, and cloud architecture. Proven expertise in database migrations, automated web scraping, and AI-driven data classification.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
+                    <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-code"></i> View Projects</a>
+                    <a href="https://drive.google.com/file/d/1M4WgX6ko1iR806CMu_1m2LB6qUK2ZvsV/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fa-solid fa-download"></i> Download Resume</a>
+                </div>
+            </div>
+            
+            <!-- Circular Profile Picture -->
+            <div class="hero-image-card">
+                <img src="Nilesh_Tripathi.jpg" class="profile-circle-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- About Me -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Professional background and technical overview</p>
+        <div class="about-card">
+            <div class="about-text">
+                <p>I am a results-driven Data Engineer based in Pune, India, with over 5.5 years of professional experience building and optimizing modern data architectures. My expertise spans cloud data warehousing with Snowflake, advanced dbt modeling, and automated data ingestion pipelines using Python.</p>
+                <p>Throughout my career at Capgemini and Infosys, I have successfully partnered with global stakeholders across Europe, North America, East Asia, and Australia to deliver reliable, production-ready analytics solutions, execute complex database migrations, and drive operational efficiency through Python automation.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <h3>5.5+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p>Automation Solutions Built</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Core technologies and tools in my engineering stack</p>
+        <div class="skills-grid">
+            <div class="skill-category-card">
+                <h3><i class="fa-solid fa-database"></i> Data Extraction & Loading</h3>
+                <div class="badge-container">
+                    <span class="skill-badge">Python (Pandas, NumPy)</span>
+                    <span class="skill-badge">Snowflake</span>
+                    <span class="skill-badge">AWS S3</span>
+                    <span class="skill-badge">Azure Blob Storage</span>
+                    <span class="skill-badge">Beautiful Soup</span>
+                    <span class="skill-badge">Selenium</span>
+                    <span class="skill-badge">SAP Materials Management</span>
+                </div>
+            </div>
+            <div class="skill-category-card">
+                <h3><i class="fa-solid fa-gears"></i> Transformation & Modeling</h3>
+                <div class="badge-container">
+                    <span class="skill-badge">SQL (JOINs, CTEs, Window Functions)</span>
+                    <span class="skill-badge">dbt (Stage, Dev, Macros)</span>
+                    <span class="skill-badge">Incremental Loading</span>
+                    <span class="skill-badge">SCD Type 2 Snapshots</span>
+                    <span class="skill-badge">Snowflake Cortex AI</span>
+                </div>
+            </div>
+            <div class="skill-category-card">
+                <h3><i class="fa-solid fa-chart-pie"></i> BI, Reporting & Workflow</h3>
+                <div class="badge-container">
+                    <span class="skill-badge">Power BI</span>
+                    <span class="skill-badge">Advanced Excel</span>
+                    <span class="skill-badge">Power Query</span>
+                    <span class="skill-badge">Git Version Control</span>
+                    <span class="skill-badge">Azure DevOps (ADO Boards)</span>
+                    <span class="skill-badge">Docker (Basic)</span>
+                    <span class="skill-badge">Terraform (Basic)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">My career trajectory in data engineering and analytics</p>
+        <div class="timeline">
+            
+            <!-- Capgemini -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Lead Data Engineer</h3>
+                            <h4>Capgemini Technology Services India Limited • Pune</h4>
+                        </div>
+                        <span class="timeline-date">June 2026 – Present</span>
+                    </div>
+                    <ul>
+                        <li>Develop and maintain Python scripts to automate web scraping and data extraction activities.</li>
+                        <li>Lead Snowflake schema migrations, including updating references from legacy schemas to new schemas.</li>
+                        <li>Create/Update dashboard data source references and troubleshoot downstream pipeline activities.</li>
+                        <li>Perform data quality checks in Snowflake to identify and resolve duplicate records.</li>
+                        <li>Leverage Snowflake Cortex AI functions (ai_filter, ai_complete) for data classification and categorization.</li>
+                        <li>Write custom AI functions, stored procedures, and tasks to reduce manual effort.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Infosys BPO -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Data Analyst</h3>
+                            <h4>Infosys BPO Limited • Pune</h4>
+                        </div>
+                        <span class="timeline-date">November 2022 – June 2026</span>
+                    </div>
+                    <ul>
+                        <li>Designed and led end-to-end cloud data pipelines ingesting raw data from AWS S3 into Snowflake raw databases, enabling scalable processing.</li>
+                        <li>Guided team members in designing ELT pipelines using dbt, transforming raw data into staging, silver, and final mart layers.</li>
+                        <li>Architected modular dbt models and implemented incremental loading strategies to optimize processing time.</li>
+                        <li>Implemented SCD Type 2 using dbt snapshots to maintain historical records and support data governance.</li>
+                        <li>Optimized complex SQL transformations using JOINs, CTEs, and Window Functions in Snowflake.</li>
+                        <li>Led technical discussions for SAP MM to Snowflake migration, collaborating with global stakeholders.</li>
+                        <li>Developed and drove adoption of 10+ Python automation solutions (Selenium, Requests, Pandas, PyPDF), reducing daily manual effort by 97%.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- K12 Innovations -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Operations & QA</h3>
+                            <h4>K 12 Innovations Private Limited • Gurgaon</h4>
+                        </div>
+                        <span class="timeline-date">December 2021 – July 2022</span>
+                    </div>
+                    <ul>
+                        <li>Designed a cost-effective data solution using MySQL (on-prem database) to centralize and manage operational data.</li>
+                        <li>Built and maintained MIS reports and dashboards using Advanced Excel and Power BI.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Earlier Experience -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Earlier Technical Support & Customer Service Roles</h3>
+                            <h4>Convergys, Teleperformance, Concentrix • Gurgaon</h4>
+                        </div>
+                        <span class="timeline-date">September 2017 – July 2021</span>
+                    </div>
+                    <ul>
+                        <li>Provided technical platform support (Comcast Xfinity), mentoring team members on troubleshooting approaches and handling complex service requests.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Real-world data engineering pipelines and automation systems</p>
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>TomTom Traffic Data Pipeline</h3>
+                </div>
+                <div class="project-body">
+                    <p>Designed and led the development of an end-to-end cloud data pipeline to extract, process, and store historical traffic congestion data from TomTom APIs (JSON) onto Snowflake using dbt.</p>
+                    <ul class="project-highlights">
+                        <li>Extracted real-time and historical traffic data using Python (Requests/Selenium).</li>
+                        <li>Loaded raw payloads into AWS S3 and ingested into Snowflake tables using copy-into.</li>
+                        <li>Implemented ELT pipelines using dbt across staging, silver, and mart layers.</li>
+                    </ul>
+                    <div class="project-impact">
+                        <i class="fa-solid fa-chart-line"></i> Reduced manual data collection effort by ~95% while delivering clean analytics-ready datasets.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>EPOS Fuel Data Automation Pipeline</h3>
+                </div>
+                <div class="project-body">
+                    <p>Engineered an end-to-end automation solution to extract fuel price data from a dynamic EPOS web portal combining Selenium authentication with Python Requests.</p>
+                    <ul class="project-highlights">
+                        <li>Managed automated session authentication via Selenium and direct API payload retrieval.</li>
+                        <li>Processed and validated response data using Pandas, NumPy, and Requests.</li>
+                        <li>Normalized unstructured web payloads into structured reporting tables.</li>
+                    </ul>
+                    <div class="project-impact">
+                        <i class="fa-solid fa-bolt"></i> Reduced manual effort from ~2 hours to near zero with high data accuracy across multiple locations.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section id="credentials">
+        <h2 class="section-title">Education & Certifications</h2>
+        <p class="section-subtitle">Academic background and verified professional credentials</p>
+        <div class="edu-cert-grid">
+            
+            <!-- Education -->
+            <div class="card-box">
+                <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                <div class="list-item">
+                    <h4>Inderprastha Engineering College</h4>
+                    <p>Bachelor of Technology in Computer Science Engineering</p>
+                    <p style="color: var(--accent-blue); font-size: 0.85rem; font-weight: 600; margin-top: 0.25rem;">Completed August 2018</p>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="card-box">
+                <h3><i class="fa-solid fa-award"></i> Certifications</h3>
+                <div class="list-item">
+                    <h4>Snowflake SnowPro Core Certification</h4>
+                    <p>Credential ID: S167961-261015-COF</p>
+                    <a href="https://achieve.snowflake.com/verify?id=S167961-261015-COF" target="_blank" rel="noopener noreferrer" class="cert-link">
+                        Verify Credential <i class="fa-solid fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="list-item">
+                    <h4>AZ-104 – Microsoft Certified: Azure Administrator Associate</h4>
+                    <p>Cloud infrastructure administration & management</p>
+                </div>
+                <div class="list-item">
+                    <h4>PL-300 – Microsoft Certified: Power BI Data Analyst Associate</h4>
+                    <p>Business intelligence & data visualization</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's connect for data engineering opportunities and collaborations</p>
+        <div class="contact-grid">
+            <a href="mailto:nileshtripathi66@gmail.com" class="contact-card">
+                <i class="fa-solid fa-envelope"></i> nileshtripathi66@gmail.com
+            </a>
+            <a href="tel:+919582616889" class="contact-card">
+                <i class="fa-solid fa-phone"></i> +91 958 261 6889
+            </a>
+            <a href="https://www.linkedin.com/in/nileshh-tripathi/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Nilesh Tripathi. All rights reserved. Built with modern web standards.</p>
+    </footer>
+
+    <!-- Script for Mobile Menu -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
